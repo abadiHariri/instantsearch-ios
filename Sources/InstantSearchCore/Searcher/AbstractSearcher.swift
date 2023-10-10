@@ -137,3 +137,49 @@ public extension AbstractSearcher {
     }
   }
 }
+
+
+public extension AbstractSearcher {
+  /// Search error composition encapsulating the error returned by the search service and the request for which this error occured
+    public func searchAsync() async -> (result: SearchResponse?, error: Error?) {
+        return await withCheckedContinuation { continuation in
+            search {result, error in
+                
+                continuation.resume(returning: (result: result, error: error))
+                
+            }
+        }
+    }
+    
+    public func search(completion:((SearchResponse?,Error?) -> ())?) {
+      if let shouldTriggerSearch = shouldTriggerSearchForQuery, !shouldTriggerSearch(request) {
+          completion?(nil,AlgoliaSearchClient.SyncOperationError.cancelled)
+        return
+      }
+
+      onSearch.fire(())
+
+      let operation = service.search(request) { [weak self, request] result in
+        guard let searcher = self else { return }
+        if case .failure(AlgoliaSearchClient.SyncOperationError.cancelled) = result {
+            
+            completion?(nil,AlgoliaSearchClient.SyncOperationError.cancelled)
+          return
+        }
+        let result = result.mapError { RequestError(request: request, error: $0) }
+        switch result {
+        case let .failure(error):
+            completion?(nil,error)
+          searcher.onError.fire(error)
+        case let .success(searchResult):
+            
+            completion?(searchResult as? SearchResponse,nil)
+          searcher.onResults.fire(searchResult)
+        }
+      }
+
+      sequencer.orderOperation(operationLauncher: { return operation })
+    }
+    
+    
+}
