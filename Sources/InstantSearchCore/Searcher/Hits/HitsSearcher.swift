@@ -158,10 +158,10 @@ public final class HitsSearcher: IndexSearcher<AlgoliaSearchService> {
     super.init(service: service, initialRequest: request)
     Telemetry.shared.trace(type: .hitsSearcher,
                            parameters: .client)
-    onResults.subscribe(with: self) { searcher, response in
-      searcher.eventTracker.trackView(for: response.hits,
-                                     eventName: "Hits Viewed")
-    }
+//    onResults.subscribe(with: self) { searcher, response in
+//      searcher.eventTracker.trackView(for: response.hits,
+//                                     eventName: "Hits Viewed")
+//    }
   }
 
   /**
