@@ -139,19 +139,42 @@ public extension AbstractSearcher {
 }
 
 
+
 public extension AbstractSearcher {
   /// Search error composition encapsulating the error returned by the search service and the request for which this error occured
     public func searchAsync() async -> (result: SearchResponse?, error: Error?) {
-        return await withCheckedContinuation { continuation in
-            search {result, error in
-                
-                continuation.resume(returning: (result: result, error: error))
-                
-            }
-        }
+        
+        
+  
+       let searchOperations: SearchOperations = .init()
+
+       return await withTaskCancellationHandler {
+           return await withCheckedContinuation { continuation in
+               search(onOperation: { operation in
+                   
+                   Task {await searchOperations.assign(operation: operation)}
+                   
+               }) {result, error in
+                   
+                   continuation.resume(returning: (result: result, error: error))
+                   
+               }
+           }
+       } onCancel: {
+           Task {await searchOperations.cancel()}
+       }
+        
+        
+//        return await withCheckedContinuation { continuation in
+//            search {result, error in
+//                
+//                continuation.resume(returning: (result: result, error: error))
+//                
+//            }
+//        }
     }
-    
-    public func search(completion:((SearchResponse?,Error?) -> ())?) {
+ 
+    public func search(onOperation:((Operation?) -> ())?, completion:((SearchResponse?,Error?) -> ())?) {
       if let shouldTriggerSearch = shouldTriggerSearchForQuery, !shouldTriggerSearch(request) {
           completion?(nil,AlgoliaSearchClient.SyncOperationError.cancelled)
         return
@@ -177,9 +200,28 @@ public extension AbstractSearcher {
           searcher.onResults.fire(searchResult)
         }
       }
-
+        
+        onOperation?(operation)
+         
       sequencer.orderOperation(operationLauncher: { return operation })
     }
     
+}
+
+
+actor SearchOperations {
+    var operation: Operation?
     
+    func assign(operation: Operation?) {
+        
+        cancel()
+        
+        self.operation = operation
+    }
+    
+    
+    func cancel () {
+        operation?.cancel()
+        operation = nil
+    }
 }
