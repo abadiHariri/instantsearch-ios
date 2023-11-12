@@ -131,12 +131,14 @@ public extension Insights {
   /// - parameter timestamp: Event timestamp
   /// - parameter userToken: User identifier. Overrides application's user token if specified. Default value is nil.
 
-  func converted(eventName: EventName,
+  func converted(subType: InsightsEvent.EventSubType?=nil,
+                 eventName: EventName,
                  indexName: IndexName,
                  objectIDs: [ObjectID],
                  timestamp: Date? = .none,
                  userToken: UserToken? = .none) {
-    eventTracker.conversion(eventName: eventName,
+      eventTracker.conversion(subType: subType,
+                            eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
@@ -150,12 +152,14 @@ public extension Insights {
   /// - parameter timestamp: Event timestamp
   /// - parameter userToken: User identifier. Overrides application's user token if specified. Default value is nil.
 
-  func converted(eventName: EventName,
+  func converted(subType: InsightsEvent.EventSubType?=nil,
+                 eventName: EventName,
                  indexName: IndexName,
                  objectID: ObjectID,
                  timestamp: Date? = .none,
                  userToken: UserToken? = .none) {
-    eventTracker.conversion(eventName: eventName,
+    eventTracker.conversion(subType: subType,
+                            eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
@@ -169,12 +173,14 @@ public extension Insights {
   /// - parameter timestamp: Event timestamp
   /// - parameter userToken: User identifier. Overrides application's user token if specified. Default value is nil.
 
-  func converted(eventName: EventName,
+  func converted(subType: InsightsEvent.EventSubType?=nil,
+                 eventName: EventName,
                  indexName: IndexName,
                  filters: [String],
                  timestamp: Date? = .none,
                  userToken: UserToken? = .none) {
-    eventTracker.conversion(eventName: eventName,
+    eventTracker.conversion(subType: subType,
+                            eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,

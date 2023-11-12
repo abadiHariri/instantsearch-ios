@@ -59,7 +59,7 @@ public extension FilterTracker {
   func trackConversion<F: FilterType>(for filter: F,
                                       eventName customEventName: EventName? = nil) {
     guard let sqlForm = (filter as? SQLSyntaxConvertible)?.sqlForm else { return }
-    tracker.converted(eventName: customEventName ?? eventName,
+      tracker.converted(subType:nil, eventName: customEventName ?? eventName,
                       indexName: searcher.indexName,
                       filters: [sqlForm],
                       timestamp: .none,

@@ -130,58 +130,64 @@ class EventTracker: EventTrackable {
       log(error)
     }
   }
-
-  func conversion(eventName: EventName,
-                  indexName: IndexName,
-                  userToken: UserToken? = .none,
-                  timestamp: Date?,
-                  objectIDs: [ObjectID]) {
-    do {
-      eventProcessor.process(try .conversion(name: eventName,
-                                             indexName: indexName,
-                                             userToken: effectiveUserToken(withEventUserToken: userToken),
-                                             timestamp: effectiveTimestamp(for: timestamp),
-                                             queryID: nil,
-                                             objectIDs: objectIDs))
-    } catch {
-      log(error)
+    
+    func conversion(subType: InsightsEvent.EventSubType?=nil,
+                    eventName: EventName,
+                    indexName: IndexName,
+                    userToken: UserToken? = .none,
+                    timestamp: Date?,
+                    objectIDs: [ObjectID]) {
+        do {
+            eventProcessor.process(try .conversion(subType:subType,
+                                                   name: eventName,
+                                                   indexName: indexName,
+                                                   userToken: effectiveUserToken(withEventUserToken: userToken),
+                                                   timestamp: effectiveTimestamp(for: timestamp),
+                                                   queryID: nil,
+                                                   objectIDs: objectIDs))
+        } catch {
+            log(error)
+        }
     }
-  }
-
-  func conversion(eventName: EventName,
-                  indexName: IndexName,
-                  userToken: UserToken? = .none,
-                  timestamp: Date?,
-                  filters: [String]) {
-    do {
-      eventProcessor.process(try .conversion(name: eventName,
-                                             indexName: indexName,
-                                             userToken: effectiveUserToken(withEventUserToken: userToken),
-                                             timestamp: effectiveTimestamp(for: timestamp),
-                                             queryID: nil,
-                                             filters: filters))
-    } catch {
-      log(error)
+    
+    func conversion(subType: InsightsEvent.EventSubType?=nil,
+                    eventName: EventName,
+                    indexName: IndexName,
+                    userToken: UserToken? = .none,
+                    timestamp: Date?,
+                    filters: [String]) {
+        do {
+            eventProcessor.process(try .conversion(subType:subType,
+                                                   name: eventName,
+                                                   indexName: indexName,
+                                                   userToken: effectiveUserToken(withEventUserToken: userToken),
+                                                   timestamp: effectiveTimestamp(for: timestamp),
+                                                   queryID: nil,
+                                                   filters: filters))
+        } catch {
+            log(error)
+        }
     }
-  }
-
-  func conversion(eventName: EventName,
-                  indexName: IndexName,
-                  userToken: UserToken?,
-                  timestamp: Date?,
-                  objectIDs: [ObjectID],
-                  queryID: QueryID) {
-    do {
-      eventProcessor.process(try .conversion(name: eventName,
-                                             indexName: indexName,
-                                             userToken: effectiveUserToken(withEventUserToken: userToken),
-                                             timestamp: effectiveTimestamp(for: timestamp),
-                                             queryID: queryID,
-                                             objectIDs: objectIDs))
-    } catch {
-      log(error)
+    
+    func conversion(subType: InsightsEvent.EventSubType?=nil,
+                    eventName: EventName,
+                    indexName: IndexName,
+                    userToken: UserToken?,
+                    timestamp: Date?,
+                    objectIDs: [ObjectID],
+                    queryID: QueryID) {
+        do {
+            eventProcessor.process(try .conversion(subType:subType,
+                                                   name: eventName,
+                                                   indexName: indexName,
+                                                   userToken: effectiveUserToken(withEventUserToken: userToken),
+                                                   timestamp: effectiveTimestamp(for: timestamp),
+                                                   queryID: queryID,
+                                                   objectIDs: objectIDs))
+        } catch {
+            log(error)
+        }
     }
-  }
 
   private func log(_ error: Error) {
     logger.error("\(error.localizedDescription)")

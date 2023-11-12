@@ -30,7 +30,8 @@ class TestFiltersTracker: FilterTrackable {
     did?((.click, eventName, indexName, filters, timestamp, userToken))
   }
 
-  func converted(eventName: EventName,
+  func converted(subType: AlgoliaSearchClient.InsightsEvent.EventSubType?,
+                 eventName: EventName,
                  indexName: IndexName,
                  filters: [String],
                  timestamp: Date?,

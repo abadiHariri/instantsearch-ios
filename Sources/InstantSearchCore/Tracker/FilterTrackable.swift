@@ -24,7 +24,8 @@ protocol FilterTrackable {
                timestamp: Date?,
                userToken: UserToken?)
 
-  func converted(eventName: EventName,
+    func converted(subType: InsightsEvent.EventSubType?,
+                eventName: EventName,
                  indexName: IndexName,
                  filters: [String],
                  timestamp: Date?,

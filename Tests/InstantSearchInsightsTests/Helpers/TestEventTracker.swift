@@ -39,15 +39,15 @@ class TestEventTracker: EventTrackable {
     didClickFilters?(eventName, indexName, userToken, timestamp, filters)
   }
 
-  func conversion(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID]) {
-    didConvertObjects?(eventName, indexName, userToken, timestamp, objectIDs)
-  }
-
-  func conversion(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], queryID: QueryID) {
-    didConvertObjectsAfterSearch?(eventName, indexName, userToken, timestamp, objectIDs, queryID)
-  }
-
-  func conversion(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, filters: [String]) {
-    didConvertFilters?(eventName, indexName, userToken, timestamp, filters)
-  }
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID]) {
+        didConvertObjects?(eventName, indexName, userToken, timestamp, objectIDs)
+    }
+    
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], queryID: QueryID) {
+        didConvertObjectsAfterSearch?(eventName, indexName, userToken, timestamp, objectIDs, queryID)
+    }
+    
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, filters: [String]) {
+        didConvertFilters?(eventName, indexName, userToken, timestamp, filters)
+    }
 }

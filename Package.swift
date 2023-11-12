@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "InstantSearch",
   platforms: [
-    .iOS(.v9),
+    .iOS(.v13),
     .macOS(.v10_11),
     .watchOS(.v2),
     .tvOS(.v9)
@@ -31,8 +31,8 @@ let package = Package(
   ],
   dependencies: [
     .package(name: "AlgoliaSearchClient",
-             url: "https://github.com/algolia/algoliasearch-client-swift",
-             from: "8.18.2"),
+             url: "https://github.com/abadiHariri/algoliasearch-client-swift.git",
+             branch: "Custom"),
     .package(name: "InstantSearchTelemetry",
              url: "https://github.com/algolia/instantsearch-telemetry-native",
              from: "0.1.3")

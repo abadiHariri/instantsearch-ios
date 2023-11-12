@@ -97,14 +97,71 @@ public extension Insights {
                             queryID: QueryID,
                             timestamp: Date? = .none,
                             userToken: UserToken? = .none) {
-    eventTracker.conversion(eventName: eventName,
+    eventTracker.conversion(subType: nil,
+                            eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
                             objectIDs: objectIDs,
                             queryID: queryID)
   }
-
+    
+    /// Track a conversion related to search
+    func addToCartAfterSearch(eventName: EventName,
+                              indexName: IndexName,
+                              objectIDs: [ObjectID],
+                              timestamp: Date? = .none,
+                              userToken: UserToken? = .none) {
+        eventTracker.conversion(
+            subType: .addToCart,
+            eventName: eventName,
+            indexName: indexName,
+            userToken: userToken,
+            timestamp: timestamp,
+            objectIDs: objectIDs)
+    }
+    
+    /// Track a conversion related to search
+    func addToCart(eventName: EventName,
+                              indexName: IndexName,
+                              objectIDs: [ObjectID],
+                              timestamp: Date? = .none,
+                              userToken: UserToken? = .none) {
+        eventTracker.click(eventName: eventName,
+                           indexName: indexName,
+                           userToken: userToken,
+                           timestamp: timestamp,
+                           objectIDs: objectIDs)
+    }
+    
+    /// Track a conversion related to search
+    ///
+    func purchaseAfterSearch(eventName: EventName,
+                             indexName: IndexName,
+                             objectIDs: [ObjectID],
+                             timestamp: Date? = .none,
+                             userToken: UserToken? = .none) {
+        eventTracker.conversion(
+            subType: .purchase,
+            eventName: eventName,
+            indexName: indexName,
+            userToken: userToken,
+            timestamp: timestamp,
+            objectIDs: objectIDs)
+    }
+    
+    /// Track a conversion related to search
+    func purchase(eventName: EventName,
+                              indexName: IndexName,
+                              objectIDs: [ObjectID],
+                              timestamp: Date? = .none,
+                              userToken: UserToken? = .none) {
+        eventTracker.click(eventName: eventName,
+                           indexName: indexName,
+                           userToken: userToken,
+                           timestamp: timestamp,
+                           objectIDs: objectIDs)
+    }
   /// Track a conversion related to search
   /// - parameter eventName: A user-defined string used to categorize events
   /// - parameter indexName: Name of the targeted index
@@ -119,7 +176,8 @@ public extension Insights {
                             queryID: QueryID,
                             timestamp: Date? = .none,
                             userToken: UserToken? = .none) {
-    eventTracker.conversion(eventName: eventName,
+    eventTracker.conversion(subType: nil,
+                            eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
