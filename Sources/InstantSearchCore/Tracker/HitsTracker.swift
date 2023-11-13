@@ -108,7 +108,9 @@ public extension HitsTracker {
                                  objectIDsWithPositions: objectIDsWithPositions,
                                  queryID: queryID,
                                  timestamp: .none,
-                                 userToken: .none)
+                                 userToken: .none,
+                                 objectData:nil,
+                                 currency: nil)
     }
   }
 
@@ -138,7 +140,9 @@ public extension HitsTracker {
                                    objectIDs: objectIDs,
                                    queryID: queryID,
                                    timestamp: .none,
-                                   userToken: .none)
+                                   userToken: .none,
+                                   objectData:nil,
+                                   currency: nil)
     }
   }
 

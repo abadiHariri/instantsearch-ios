@@ -25,14 +25,18 @@ public extension Insights {
                           positions: [Int],
                           queryID: QueryID,
                           timestamp: Date? = .none,
-                          userToken: UserToken? = .none) {
+                          userToken: UserToken? = .none,
+                          objectData: [ObjectDataEvent]? = nil,
+                          currency: String? = nil) {
     eventTracker.click(eventName: eventName,
                        indexName: indexName,
                        userToken: userToken,
                        timestamp: timestamp,
                        objectIDs: objectIDs,
                        positions: positions,
-                       queryID: queryID)
+                       queryID: queryID,
+                       objectData:objectData,
+                       currency:currency)
   }
 
   /// Track a click related to search
@@ -48,14 +52,18 @@ public extension Insights {
                           objectIDsWithPositions: [(ObjectID, Int)],
                           queryID: QueryID,
                           timestamp: Date? = .none,
-                          userToken: UserToken? = .none) {
+                          userToken: UserToken? = .none,
+                          objectData: [ObjectDataEvent]? = nil,
+                          currency: String? = nil)  {
     clickedAfterSearch(eventName: eventName,
                        indexName: indexName,
                        objectIDs: objectIDsWithPositions.map { $0.0 },
                        positions: objectIDsWithPositions.map { $0.1 },
                        queryID: queryID,
                        timestamp: timestamp,
-                       userToken: userToken)
+                       userToken: userToken,
+                       objectData:objectData,
+                       currency:currency)
   }
 
   /// Track a click related to search
@@ -73,14 +81,18 @@ public extension Insights {
                           position: Int,
                           queryID: QueryID,
                           timestamp: Date? = .none,
-                          userToken: UserToken? = .none) {
+                          userToken: UserToken? = .none,
+                          objectData: [ObjectDataEvent]? = nil,
+                          currency: String? = nil)  {
     clickedAfterSearch(eventName: eventName,
                        indexName: indexName,
                        objectIDs: [objectID],
                        positions: [position],
                        queryID: queryID,
                        timestamp: timestamp,
-                       userToken: userToken)
+                       userToken: userToken,
+                       objectData:objectData,
+                       currency:currency)
   }
 
   /// Track a conversion related to search
@@ -96,29 +108,39 @@ public extension Insights {
                             objectIDs: [ObjectID],
                             queryID: QueryID,
                             timestamp: Date? = .none,
-                            userToken: UserToken? = .none) {
+                            userToken: UserToken? = .none,
+                            objectData: [ObjectDataEvent]? = nil,
+                            currency: String? = nil) {
     eventTracker.conversion(subType: nil,
                             eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
                             objectIDs: objectIDs,
-                            queryID: queryID)
+                            queryID: queryID,
+                            objectData:objectData,
+                            currency:currency)
   }
     
     /// Track a conversion related to search
     func addToCartAfterSearch(eventName: EventName,
                               indexName: IndexName,
                               objectIDs: [ObjectID],
+                              queryID: QueryID,
                               timestamp: Date? = .none,
-                              userToken: UserToken? = .none) {
+                              userToken: UserToken? = .none,
+                              objectData: [ObjectDataEvent]? = nil,
+                              currency: String? = nil) {
         eventTracker.conversion(
             subType: .addToCart,
             eventName: eventName,
             indexName: indexName,
             userToken: userToken,
             timestamp: timestamp,
-            objectIDs: objectIDs)
+            objectIDs: objectIDs,
+            queryID: queryID,
+            objectData:objectData,
+            currency:currency)
     }
     
     /// Track a conversion related to search
@@ -126,12 +148,16 @@ public extension Insights {
                               indexName: IndexName,
                               objectIDs: [ObjectID],
                               timestamp: Date? = .none,
-                              userToken: UserToken? = .none) {
+                              userToken: UserToken? = .none,
+                   objectData: [ObjectDataEvent]? = nil,
+                   currency: String? = nil) {
         eventTracker.click(eventName: eventName,
                            indexName: indexName,
                            userToken: userToken,
                            timestamp: timestamp,
-                           objectIDs: objectIDs)
+                           objectIDs: objectIDs,
+                           objectData:objectData,
+                           currency:currency)
     }
     
     /// Track a conversion related to search
@@ -139,6 +165,9 @@ public extension Insights {
     func purchaseAfterSearch(eventName: EventName,
                              indexName: IndexName,
                              objectIDs: [ObjectID],
+                             queryID: QueryID,
+                             objectData: [ObjectDataEvent]? = nil,
+                             currency: String? = nil,
                              timestamp: Date? = .none,
                              userToken: UserToken? = .none) {
         eventTracker.conversion(
@@ -147,20 +176,27 @@ public extension Insights {
             indexName: indexName,
             userToken: userToken,
             timestamp: timestamp,
-            objectIDs: objectIDs)
+            objectIDs: objectIDs,
+            queryID: queryID,
+            objectData:objectData,
+            currency:currency)
     }
     
     /// Track a conversion related to search
     func purchase(eventName: EventName,
                               indexName: IndexName,
                               objectIDs: [ObjectID],
+                  objectData: [ObjectDataEvent]? = nil,
+                  currency: String? = nil,
                               timestamp: Date? = .none,
                               userToken: UserToken? = .none) {
         eventTracker.click(eventName: eventName,
                            indexName: indexName,
                            userToken: userToken,
                            timestamp: timestamp,
-                           objectIDs: objectIDs)
+                           objectIDs: objectIDs,
+                           objectData:objectData,
+                           currency:currency)
     }
   /// Track a conversion related to search
   /// - parameter eventName: A user-defined string used to categorize events
@@ -175,13 +211,17 @@ public extension Insights {
                             objectID: ObjectID,
                             queryID: QueryID,
                             timestamp: Date? = .none,
-                            userToken: UserToken? = .none) {
+                            userToken: UserToken? = .none,
+                            objectData: [ObjectDataEvent]? = nil,
+                            currency: String? = nil) {
     eventTracker.conversion(subType: nil,
                             eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
                             objectIDs: [objectID],
-                            queryID: queryID)
+                            queryID: queryID,
+                            objectData:objectData,
+                            currency:currency)
   }
 }

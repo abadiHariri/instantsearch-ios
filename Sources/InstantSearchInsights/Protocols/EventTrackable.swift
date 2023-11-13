@@ -26,7 +26,9 @@ protocol EventTrackable {
              indexName: IndexName,
              userToken: UserToken?,
              timestamp: Date?,
-             objectIDs: [ObjectID])
+             objectIDs: [ObjectID],
+             objectData: [ObjectDataEvent]?,
+             currency: String? )
 
   func click(eventName: EventName,
              indexName: IndexName,
@@ -34,7 +36,9 @@ protocol EventTrackable {
              timestamp: Date?,
              objectIDs: [ObjectID],
              positions: [Int],
-             queryID: QueryID)
+             queryID: QueryID,
+             objectData: [ObjectDataEvent]?,
+             currency: String?)
 
   func click(eventName: EventName,
              indexName: IndexName,
@@ -47,7 +51,9 @@ protocol EventTrackable {
                   indexName: IndexName,
                   userToken: UserToken?,
                   timestamp: Date?,
-                  objectIDs: [ObjectID])
+                  objectIDs: [ObjectID],
+                  objectData: [ObjectDataEvent]?,
+                  currency: String?)
 
   func conversion(subType: InsightsEvent.EventSubType?,
                   eventName: EventName,
@@ -55,7 +61,9 @@ protocol EventTrackable {
                   userToken: UserToken?,
                   timestamp: Date?,
                   objectIDs: [ObjectID],
-                  queryID: QueryID)
+                  queryID: QueryID,
+                  objectData: [ObjectDataEvent]?,
+                  currency: String?)
 
   func conversion(subType: InsightsEvent.EventSubType?,
                   eventName: EventName,

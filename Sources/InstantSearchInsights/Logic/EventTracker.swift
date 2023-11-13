@@ -85,7 +85,9 @@ class EventTracker: EventTrackable {
              timestamp: Date?,
              objectIDs: [ObjectID],
              positions: [Int],
-             queryID: QueryID) {
+             queryID: QueryID,
+             objectData: [ObjectDataEvent]? = nil,
+             currency: String? = nil) {
     do {
       let objectIDsWithPositions = zip(objectIDs, positions).map { $0 }
       eventProcessor.process(try .click(name: eventName,
@@ -93,6 +95,8 @@ class EventTracker: EventTrackable {
                                         userToken: effectiveUserToken(withEventUserToken: userToken),
                                         timestamp: effectiveTimestamp(for: timestamp),
                                         queryID: queryID,
+                                        objectData: objectData,
+                                        currency:currency,
                                         objectIDsWithPositions: objectIDsWithPositions))
     } catch {
       log(error)
@@ -103,13 +107,17 @@ class EventTracker: EventTrackable {
              indexName: IndexName,
              userToken: UserToken? = .none,
              timestamp: Date?,
-             objectIDs: [ObjectID]) {
+             objectIDs: [ObjectID],
+             objectData: [ObjectDataEvent]? = nil,
+             currency: String? = nil) {
     do {
       eventProcessor.process(try .click(name: eventName,
                                         indexName: indexName,
                                         userToken: effectiveUserToken(withEventUserToken: userToken),
                                         timestamp: effectiveTimestamp(for: timestamp),
-                                        objectIDs: objectIDs))
+                                        objectIDs: objectIDs,
+                                        objectData: objectData,
+                                        currency:currency))
     } catch {
       log(error)
     }
@@ -136,7 +144,9 @@ class EventTracker: EventTrackable {
                     indexName: IndexName,
                     userToken: UserToken? = .none,
                     timestamp: Date?,
-                    objectIDs: [ObjectID]) {
+                    objectIDs: [ObjectID],
+                    objectData: [ObjectDataEvent]? = nil,
+                    currency: String? = nil) {
         do {
             eventProcessor.process(try .conversion(subType:subType,
                                                    name: eventName,
@@ -144,7 +154,9 @@ class EventTracker: EventTrackable {
                                                    userToken: effectiveUserToken(withEventUserToken: userToken),
                                                    timestamp: effectiveTimestamp(for: timestamp),
                                                    queryID: nil,
-                                                   objectIDs: objectIDs))
+                                                   objectIDs: objectIDs,
+                                                   objectData: objectData,
+                                                   currency: currency))
         } catch {
             log(error)
         }
@@ -175,7 +187,9 @@ class EventTracker: EventTrackable {
                     userToken: UserToken?,
                     timestamp: Date?,
                     objectIDs: [ObjectID],
-                    queryID: QueryID) {
+                    queryID: QueryID,
+                    objectData: [ObjectDataEvent]? = nil,
+                    currency: String? = nil) {
         do {
             eventProcessor.process(try .conversion(subType:subType,
                                                    name: eventName,
@@ -183,7 +197,9 @@ class EventTracker: EventTrackable {
                                                    userToken: effectiveUserToken(withEventUserToken: userToken),
                                                    timestamp: effectiveTimestamp(for: timestamp),
                                                    queryID: queryID,
-                                                   objectIDs: objectIDs))
+                                                   objectIDs: objectIDs,
+                                                   objectData: objectData,
+                                                   currency: currency))
         } catch {
             log(error)
         }

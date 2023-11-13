@@ -10,6 +10,8 @@ import Foundation
 @testable import InstantSearchInsights
 
 class TestEventTracker: EventTrackable {
+
+    
   var didViewObjects: ((EventName, IndexName, UserToken?, Date?, [ObjectID]) -> Void)?
   var didViewFilters: ((EventName, IndexName, UserToken?, Date?, [String]) -> Void)?
   var didClickObjects: ((EventName, IndexName, UserToken?, Date?, [ObjectID]) -> Void)?
@@ -27,23 +29,23 @@ class TestEventTracker: EventTrackable {
     didViewFilters?(eventName, indexName, userToken, timestamp, filters)
   }
 
-  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID]) {
+  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], objectData: [ObjectDataEvent]?, currency: String?) {
     didClickObjects?(eventName, indexName, userToken, timestamp, objectIDs)
   }
 
-  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], positions: [Int], queryID: QueryID) {
+  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], positions: [Int], queryID: QueryID, objectData: [ObjectDataEvent]?, currency: String?) {
     didClickObjectsAfterSearch?(eventName, indexName, userToken, timestamp, objectIDs, positions, queryID)
   }
 
   func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, filters: [String]) {
     didClickFilters?(eventName, indexName, userToken, timestamp, filters)
   }
-
-    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID]) {
+     
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], objectData: [ObjectDataEvent]?, currency: String?) {
         didConvertObjects?(eventName, indexName, userToken, timestamp, objectIDs)
     }
     
-    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], queryID: QueryID) {
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], queryID: QueryID, objectData: [ObjectDataEvent]?, currency: String?) {
         didConvertObjectsAfterSearch?(eventName, indexName, userToken, timestamp, objectIDs, queryID)
     }
     

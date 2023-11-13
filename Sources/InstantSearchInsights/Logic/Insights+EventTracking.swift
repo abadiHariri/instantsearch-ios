@@ -78,12 +78,16 @@ public extension Insights {
                indexName: IndexName,
                objectIDs: [ObjectID],
                timestamp: Date? = .none,
-               userToken: UserToken? = .none) {
+               userToken: UserToken? = .none,
+               objectData: [ObjectDataEvent]? = nil,
+               currency: String? = nil) {
     eventTracker.click(eventName: eventName,
                        indexName: indexName,
                        userToken: userToken,
                        timestamp: timestamp,
-                       objectIDs: objectIDs)
+                       objectIDs: objectIDs,
+                       objectData: objectData,
+                       currency: currency)
   }
 
   /// Track a click
@@ -97,12 +101,16 @@ public extension Insights {
                indexName: IndexName,
                objectID: ObjectID,
                timestamp: Date? = .none,
-               userToken: UserToken? = .none) {
+               userToken: UserToken? = .none,
+               objectData: [ObjectDataEvent]? = nil,
+               currency: String? = nil) {
     eventTracker.click(eventName: eventName,
                        indexName: indexName,
                        userToken: userToken,
                        timestamp: timestamp,
-                       objectIDs: [objectID])
+                       objectIDs: [objectID],
+                       objectData: objectData,
+                       currency: currency)
   }
 
   /// Track a click
@@ -136,13 +144,17 @@ public extension Insights {
                  indexName: IndexName,
                  objectIDs: [ObjectID],
                  timestamp: Date? = .none,
-                 userToken: UserToken? = .none) {
+                 userToken: UserToken? = .none,
+                 objectData: [ObjectDataEvent]? = nil,
+                 currency: String? = nil) {
       eventTracker.conversion(subType: subType,
                             eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
-                            objectIDs: objectIDs)
+                            objectIDs: objectIDs,
+                              objectData: objectData,
+                              currency: currency)
   }
 
   /// Track a conversion
@@ -157,13 +169,17 @@ public extension Insights {
                  indexName: IndexName,
                  objectID: ObjectID,
                  timestamp: Date? = .none,
-                 userToken: UserToken? = .none) {
+                 userToken: UserToken? = .none,
+                 objectData: [ObjectDataEvent]? = nil,
+                 currency: String? = nil) {
     eventTracker.conversion(subType: subType,
                             eventName: eventName,
                             indexName: indexName,
                             userToken: userToken,
                             timestamp: timestamp,
-                            objectIDs: [objectID])
+                            objectIDs: [objectID],
+                            objectData: objectData,
+                            currency: currency)
   }
 
   /// Track a conversion
