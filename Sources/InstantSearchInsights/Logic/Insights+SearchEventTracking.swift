@@ -151,13 +151,15 @@ public extension Insights {
                               userToken: UserToken? = .none,
                    objectData: [ObjectDataEvent]? = nil,
                    currency: String? = nil) {
-        eventTracker.click(eventName: eventName,
-                           indexName: indexName,
-                           userToken: userToken,
-                           timestamp: timestamp,
-                           objectIDs: objectIDs,
-                           objectData:objectData,
-                           currency:currency)
+        eventTracker.conversion(
+            subType: .addToCart,
+            eventName: eventName,
+            indexName: indexName,
+            userToken: userToken,
+            timestamp: timestamp,
+            objectIDs: objectIDs,
+            objectData:objectData,
+            currency:currency)
     }
     
     /// Track a conversion related to search
@@ -190,13 +192,14 @@ public extension Insights {
                   currency: String? = nil,
                               timestamp: Date? = .none,
                               userToken: UserToken? = .none) {
-        eventTracker.click(eventName: eventName,
-                           indexName: indexName,
-                           userToken: userToken,
-                           timestamp: timestamp,
-                           objectIDs: objectIDs,
-                           objectData:objectData,
-                           currency:currency)
+        eventTracker.conversion(subType: .purchase,
+                                eventName: eventName,
+                                indexName: indexName,
+                                userToken: userToken,
+                                timestamp: timestamp,
+                                objectIDs: objectIDs,
+                                objectData:objectData,
+                                currency:currency)
     }
   /// Track a conversion related to search
   /// - parameter eventName: A user-defined string used to categorize events
