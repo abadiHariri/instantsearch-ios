@@ -207,21 +207,3 @@ public extension AbstractSearcher {
     }
     
 }
-
-
-actor SearchOperations {
-    var operation: Operation?
-    
-    func assign(operation: Operation?) {
-        
-        cancel()
-        
-        self.operation = operation
-    }
-    
-    
-    func cancel () {
-        operation?.cancel()
-        operation = nil
-    }
-}
