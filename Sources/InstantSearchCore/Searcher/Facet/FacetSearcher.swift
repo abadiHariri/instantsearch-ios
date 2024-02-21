@@ -68,11 +68,11 @@ public final class FacetSearcher: IndexSearcher<FacetSearchService> {
     let service = FacetSearchService(client: .init(appID: appID, apiKey: apiKey))
     let request = Request(query: "", indexName: indexName, attribute: facetName, context: query, requestOptions: requestOptions)
     self.init(service: service, initialRequest: request)
-    Telemetry.shared.trace(type: .facetSearcher,
-                           parameters: [
-                             .appID,
-                             .apiKey
-                           ])
+//    Telemetry.shared.trace(type: .facetSearcher,
+//                           parameters: [
+//                             .appID,
+//                             .apiKey
+//                           ])
   }
 
   public convenience init(client: SearchClient,
@@ -83,10 +83,10 @@ public final class FacetSearcher: IndexSearcher<FacetSearchService> {
     let service = FacetSearchService(client: client)
     let request = Request(query: "", indexName: indexName, attribute: facetName, context: query, requestOptions: requestOptions)
     self.init(service: service, initialRequest: request)
-    Telemetry.shared.trace(type: .facetSearcher,
-                           parameters: [
-                             .client
-                           ])
+//    Telemetry.shared.trace(type: .facetSearcher,
+//                           parameters: [
+//                             .client
+//                           ])
   }
 }
 

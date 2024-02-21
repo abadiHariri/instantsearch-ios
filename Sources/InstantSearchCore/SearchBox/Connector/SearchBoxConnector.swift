@@ -38,10 +38,10 @@ public class SearchBoxConnector {
     searcherConnection = interactor.connectSearcher(searcher,
                                                     searchTriggeringMode: searchTriggeringMode)
     controllerConnections = []
-    Telemetry.shared.traceConnector(type: .searchBox,
-                                    parameters: [
-                                      searchTriggeringMode == .searchAsYouType ? .none : .searchTriggeringMode
-                                    ])
+//    Telemetry.shared.traceConnector(type: .searchBox,
+//                                    parameters: [
+//                                      searchTriggeringMode == .searchAsYouType ? .none : .searchTriggeringMode
+//                                    ])
   }
 }
 

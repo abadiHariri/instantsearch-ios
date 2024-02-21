@@ -7,7 +7,7 @@
 #if !InstantSearchCocoaPods
   import InstantSearchCore
 #endif
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 #if canImport(Combine) && canImport(SwiftUI) && (arch(arm64) || arch(x86_64))
   import Combine
   import SwiftUI
@@ -33,7 +33,7 @@ import InstantSearchTelemetry
                 selected: IndexName = "") {
       self.indexNames = indexNames
       self.selected = selected
-      InstantSearchTelemetry.shared.traceDeclarative(type: .sortBy)
+     // InstantSearchTelemetry.shared.traceDeclarative(type: .sortBy)
     }
   }
 #endif

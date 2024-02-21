@@ -8,7 +8,7 @@
 #if !InstantSearchCocoaPods
   import InstantSearchCore
 #endif
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 #if canImport(Combine) && canImport(SwiftUI) && (arch(arm64) || arch(x86_64))
   import Combine
   import SwiftUI
@@ -22,7 +22,7 @@ import InstantSearchTelemetry
     public var didToggle: (() -> Void)?
 
     public init() {
-      InstantSearchTelemetry.shared.traceDeclarative(type: .relevantSort)
+    //  InstantSearchTelemetry.shared.traceDeclarative(type: .relevantSort)
     }
 
     public func setItem(_ state: RelevantSortTextualRepresentation?) {

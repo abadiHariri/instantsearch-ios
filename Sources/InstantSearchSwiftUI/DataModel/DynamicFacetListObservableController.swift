@@ -8,7 +8,7 @@
 #if !InstantSearchCocoaPods
   import InstantSearchCore
 #endif
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 #if canImport(Combine) && canImport(SwiftUI) && (arch(arm64) || arch(x86_64))
   import Combine
   import SwiftUI
@@ -58,7 +58,7 @@ import InstantSearchTelemetry
       self.orderedFacets = orderedFacets
       self.selections = selections
       self.didSelect = didSelect
-      InstantSearchTelemetry.shared.traceDeclarative(type: .dynamicFacets)
+     // InstantSearchTelemetry.shared.traceDeclarative(type: .dynamicFacets)
     }
   }
 #endif

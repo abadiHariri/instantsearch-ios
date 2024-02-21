@@ -69,10 +69,10 @@ public struct SearchConnector<Record: Codable>: Connection {
       filterStateSearcherConnection = nil
     }
 
-    Telemetry.shared.traceConnector(type: .hitsSearcher,
-                                    parameters: [
-                                      filterState == nil ? .none : .filterState
-                                    ])
+//    Telemetry.shared.traceConnector(type: .hitsSearcher,
+//                                    parameters: [
+//                                      filterState == nil ? .none : .filterState
+//                                    ])
   }
 
   /**
@@ -104,13 +104,13 @@ public struct SearchConnector<Record: Codable>: Connection {
               hitsController: hitsController,
               filterState: filterState)
 
-    Telemetry.shared.traceConnector(type: .hitsSearcher,
-                                    parameters: [
-                                      .appID,
-                                      .apiKey,
-                                      .indexName,
-                                      filterState == nil ? .none : .filterStateParameter
-                                    ])
+//    Telemetry.shared.traceConnector(type: .hitsSearcher,
+//                                    parameters: [
+//                                      .appID,
+//                                      .apiKey,
+//                                      .indexName,
+//                                      filterState == nil ? .none : .filterStateParameter
+//                                    ])
   }
 
   public func connect() {

@@ -42,7 +42,7 @@ public extension QueryRuleCustomDataConnector {
     self.init(interactor: interactor) {
       QueryRuleCustomDataInteractor<Model>.SearcherConnection(interactor: $0, searcher: searcher)
     }
-    Telemetry.shared.traceConnector(type: .queryRuleCustomData)
+ //   Telemetry.shared.traceConnector(type: .queryRuleCustomData)
   }
 
   /**
@@ -58,7 +58,7 @@ public extension QueryRuleCustomDataConnector {
     self.init(interactor: interactor) {
       QueryRuleCustomDataInteractor<Model>.MultiIndexSearcherConnection(interactor: $0, searcher: searcher, queryIndex: queryIndex)
     }
-    Telemetry.shared.traceConnector(type: .queryRuleCustomData)
+  //  Telemetry.shared.traceConnector(type: .queryRuleCustomData)
   }
 }
 

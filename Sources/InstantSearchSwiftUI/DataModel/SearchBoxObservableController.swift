@@ -8,7 +8,7 @@
 #if !InstantSearchCocoaPods
   import InstantSearchCore
 #endif
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 #if canImport(Combine) && canImport(SwiftUI) && (arch(arm64) || arch(x86_64))
   import Combine
   import SwiftUI
@@ -32,7 +32,7 @@ import InstantSearchTelemetry
 
     public init(query: String = "") {
       self.query = query
-      InstantSearchTelemetry.shared.traceDeclarative(type: .searchBox)
+     // InstantSearchTelemetry.shared.traceDeclarative(type: .searchBox)
       querySubscription = $query.removeDuplicates().sink { [weak self] value in
         self?.onQueryChanged?(value)
       }

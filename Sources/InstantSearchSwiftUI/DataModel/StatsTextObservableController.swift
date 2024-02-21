@@ -8,7 +8,7 @@
 #if !InstantSearchCocoaPods
   import InstantSearchCore
 #endif
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 #if canImport(Combine) && canImport(SwiftUI) && (arch(arm64) || arch(x86_64))
   import Combine
   import SwiftUI
@@ -25,7 +25,7 @@ import InstantSearchTelemetry
 
     public init(stats: String = "") {
       self.stats = stats
-      InstantSearchTelemetry.shared.traceDeclarative(type: .stats)
+   //   InstantSearchTelemetry.shared.traceDeclarative(type: .stats)
     }
   }
 #endif

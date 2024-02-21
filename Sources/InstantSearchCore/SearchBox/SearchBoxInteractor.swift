@@ -29,7 +29,7 @@ public class SearchBoxInteractor {
   public init() {
     onQueryChanged = .init()
     onQuerySubmitted = .init()
-    Telemetry.shared.trace(type: .searchBox)
+  //  Telemetry.shared.trace(type: .searchBox)
   }
 
   public func submitQuery() {

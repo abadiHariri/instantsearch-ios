@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 
-typealias Telemetry = InstantSearchTelemetry
+//typealias Telemetry = InstantSearchTelemetry
 
-extension Telemetry: UserAgentExtending {
-  public var userAgentExtension: String {
-    return encodedValue.flatMap { "ISTelemetry(\($0))" } ?? ""
-  }
-}
+//extension Telemetry: UserAgentExtending {
+//  public var userAgentExtension: String {
+//    return encodedValue.flatMap { "ISTelemetry(\($0))" } ?? ""
+//  }
+//}

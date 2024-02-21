@@ -51,10 +51,10 @@ public class DynamicFacetListConnector<Searcher: SearchResultObservable> where S
     filterStateConnection = interactor.connectFilterState(filterState,
                                                           filterGroupForAttribute: filterGroupForAttribute,
                                                           defaultFilterGroupType: defaultFilterGroupType)
-    Telemetry.shared.traceConnector(type: .dynamicFacets,
-                                    parameters: [
-                                      filterGroupForAttribute.isEmpty ? .none : .filterGroupForAttribute
-                                    ])
+//    Telemetry.shared.traceConnector(type: .dynamicFacets,
+//                                    parameters: [
+//                                      filterGroupForAttribute.isEmpty ? .none : .filterGroupForAttribute
+//                                    ])
   }
 
   /**
@@ -87,13 +87,13 @@ public class DynamicFacetListConnector<Searcher: SearchResultObservable> where S
               interactor: interactor,
               filterGroupForAttribute: filterGroupForAttribute,
               defaultFilterGroupType: defaultFilterGroupType)
-    Telemetry.shared.traceConnector(type: .dynamicFacets,
-                                    parameters: [
-                                      orderedFacets.isEmpty ? .none : .orderedFacets,
-                                      selections.isEmpty ? .none : .selections,
-                                      selectionModeForAttribute.isEmpty ? .none : .selectionModeForAttribute,
-                                      filterGroupForAttribute.isEmpty ? .none : .filterGroupForAttribute
-                                    ])
+//    Telemetry.shared.traceConnector(type: .dynamicFacets,
+//                                    parameters: [
+//                                      orderedFacets.isEmpty ? .none : .orderedFacets,
+//                                      selections.isEmpty ? .none : .selections,
+//                                      selectionModeForAttribute.isEmpty ? .none : .selectionModeForAttribute,
+//                                      filterGroupForAttribute.isEmpty ? .none : .filterGroupForAttribute
+//                                    ])
   }
 }
 

@@ -68,10 +68,10 @@ public class FilterMapConnector<Filter: FilterType> {
                                                           groupName: groupName)
     interactor.selected = selected
     controllerConnections = []
-    Telemetry.shared.traceConnector(type: .filterMap,
-                                    parameters: [
-                                      groupName == nil ? .none : .groupName
-                                    ])
+//    Telemetry.shared.traceConnector(type: .filterMap,
+//                                    parameters: [
+//                                      groupName == nil ? .none : .groupName
+//                                    ])
   }
 }
 

@@ -71,13 +71,13 @@ public class HitsInteractor<Record: Codable>: AnyHitsInteractor {
               paginationController: Paginator<Record>(),
               infiniteScrollingController: InfiniteScrollingController(),
               jsonDecoder: jsonDecoder)
-    Telemetry.shared.trace(type: .hits,
-                           parameters: settings.flatMap { settings in
-                             [
-                               settings.infiniteScrolling == Constants.Defaults.infiniteScrolling ? .none : .infiniteScrolling,
-                               settings.showItemsOnEmptyQuery == Constants.Defaults.showItemsOnEmptyQuery ? .none : .showItemsOnEmptyQuery
-                             ]
-                           } ?? [])
+//    Telemetry.shared.trace(type: .hits,
+//                           parameters: settings.flatMap { settings in
+//                             [
+//                               settings.infiniteScrolling == Constants.Defaults.infiniteScrolling ? .none : .infiniteScrolling,
+//                               settings.showItemsOnEmptyQuery == Constants.Defaults.showItemsOnEmptyQuery ? .none : .showItemsOnEmptyQuery
+//                             ]
+//                           } ?? [])
   }
 
   internal init(settings: Settings? = nil,

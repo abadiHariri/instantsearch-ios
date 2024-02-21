@@ -13,6 +13,6 @@ struct CoreUserAgentSetter {
 
   init() {
     UserAgentController.append(UserAgent(title: "InstantSearch iOS", version: Version.current.description))
-    UserAgentController.append(Telemetry.shared)
+    //UserAgentController.append(Telemetry.shared)
   }
 }

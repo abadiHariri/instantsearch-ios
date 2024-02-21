@@ -11,10 +11,10 @@ import Foundation
 /// Business logic for Current Refinements component
 public class CurrentFiltersInteractor: ItemsListInteractor<FilterAndID> {
   override public init(items: Set<FilterAndID> = []) {
-    Telemetry.shared.trace(type: .currentFilters,
-                           parameters: [
-                             items.isEmpty ? .none : .items
-                           ])
+//    Telemetry.shared.trace(type: .currentFilters,
+//                           parameters: [
+//                             items.isEmpty ? .none : .items
+//                           ])
     super.init(items: items)
   }
 }

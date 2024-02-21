@@ -41,11 +41,11 @@ public class FilterClearConnector {
                                                           filterGroupIDs: filterGroupIDs,
                                                           clearMode: clearMode)
     controllerConnections = []
-    Telemetry.shared.traceConnector(type: .filterClear,
-                                    parameters: [
-                                      clearMode == .specified ? .none : .clearMode,
-                                      filterGroupIDs == nil ? .none : .filterGroupIds
-                                    ])
+//    Telemetry.shared.traceConnector(type: .filterClear,
+//                                    parameters: [
+//                                      clearMode == .specified ? .none : .clearMode,
+//                                      filterGroupIDs == nil ? .none : .filterGroupIds
+//                                    ])
   }
 }
 

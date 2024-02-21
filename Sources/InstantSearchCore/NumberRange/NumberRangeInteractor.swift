@@ -23,7 +23,7 @@ public class NumberRangeInteractor<Number: Comparable & DoubleRepresentable>: It
 
   public convenience init() {
     self.init(item: nil)
-    Telemetry.shared.trace(type: .numberRangeFilter)
+   // Telemetry.shared.trace(type: .numberRangeFilter)
   }
 
   /**
@@ -34,10 +34,10 @@ public class NumberRangeInteractor<Number: Comparable & DoubleRepresentable>: It
     onNumberRangeComputed = .init()
     onBoundsComputed = .init()
     super.init(item: item)
-    Telemetry.shared.trace(type: .numberRangeFilter,
-                           parameters: [
-                             item == nil ? .none : .range
-                           ])
+//    Telemetry.shared.trace(type: .numberRangeFilter,
+//                           parameters: [
+//                             item == nil ? .none : .range
+//                           ])
   }
 
   /// Set the bounds value and clamps the current range value to it

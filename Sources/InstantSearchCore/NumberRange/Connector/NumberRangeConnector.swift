@@ -59,11 +59,11 @@ public class NumberRangeConnector<Number: Comparable & DoubleRepresentable> {
                                                           operator: `operator`,
                                                           groupName: groupName)
     controllerConnections = []
-    Telemetry.shared.traceConnector(type: .numberRangeFilter,
-                                    parameters: [
-                                      `operator` == .and ? .none : .operator,
-                                      groupName == nil ? .none : .groupName
-                                    ])
+//    Telemetry.shared.traceConnector(type: .numberRangeFilter,
+//                                    parameters: [
+//                                      `operator` == .and ? .none : .operator,
+//                                      groupName == nil ? .none : .groupName
+//                                    ])
   }
 }
 

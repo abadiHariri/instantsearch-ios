@@ -79,11 +79,11 @@ public class FilterComparisonConnector<Number: Comparable & DoubleRepresentable>
       interactor.applyBounds(bounds: bounds)
     }
     controllerConnections = []
-    Telemetry.shared.traceConnector(type: .numberFilter,
-                                    parameters: [
-                                      bounds == nil ? .none : .bounds,
-                                      groupName == nil ? .none : .groupName
-                                    ])
+//    Telemetry.shared.traceConnector(type: .numberFilter,
+//                                    parameters: [
+//                                      bounds == nil ? .none : .bounds,
+//                                      groupName == nil ? .none : .groupName
+//                                    ])
   }
 }
 

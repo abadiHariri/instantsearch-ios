@@ -19,11 +19,11 @@ public class FacetListInteractor: SelectableListInteractor<String, Facet> {
     super.init(items: facets, selectionMode: selectionMode)
     mutationQueue.maxConcurrentOperationCount = 1
     mutationQueue.qualityOfService = .userInitiated
-    Telemetry.shared.trace(type: .facetList,
-                           parameters: [
-                             facets.isEmpty ? .none : .facets,
-                             selectionMode == .multiple ? .none : .selectionMode
-                           ].compactMap { $0 })
+//    Telemetry.shared.trace(type: .facetList,
+//                           parameters: [
+//                             facets.isEmpty ? .none : .facets,
+//                             selectionMode == .multiple ? .none : .selectionMode
+//                           ].compactMap { $0 })
   }
 }
 

@@ -12,10 +12,10 @@ public class FilterMapInteractor<Filter: FilterType>: SelectableSegmentInteracto
   override public init(items: [Int: Filter], selected: Int? = .none) {
     super.init(items: items,
                selected: selected)
-    Telemetry.shared.trace(type: .filterMap,
-                           parameters: [
-                             selected == nil ? .none : .selected
-                           ])
+//    Telemetry.shared.trace(type: .filterMap,
+//                           parameters: [
+//                             selected == nil ? .none : .selected
+//                           ])
   }
 }
 

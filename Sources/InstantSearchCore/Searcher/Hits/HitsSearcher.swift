@@ -136,11 +136,11 @@ public final class HitsSearcher: IndexSearcher<AlgoliaSearchService> {
                           requestOptions: RequestOptions? = nil) {
     let client = SearchClient(appID: appID, apiKey: apiKey)
     self.init(client: client, indexName: indexName, query: query, requestOptions: requestOptions)
-    Telemetry.shared.trace(type: .hitsSearcher,
-                           parameters: [
-                             .appID,
-                             .apiKey
-                           ])
+//    Telemetry.shared.trace(type: .hitsSearcher,
+//                           parameters: [
+//                             .appID,
+//                             .apiKey
+//                           ])
   }
 
   /**
@@ -156,8 +156,8 @@ public final class HitsSearcher: IndexSearcher<AlgoliaSearchService> {
     let service = AlgoliaSearchService(client: client)
     let request = AlgoliaSearchService.Request(indexName: indexName, query: query, requestOptions: requestOptions)
     super.init(service: service, initialRequest: request)
-    Telemetry.shared.trace(type: .hitsSearcher,
-                           parameters: .client)
+//    Telemetry.shared.trace(type: .hitsSearcher,
+//                           parameters: .client)
 //    onResults.subscribe(with: self) { searcher, response in
 //      searcher.eventTracker.trackView(for: response.hits,
 //                                     eventName: "Hits Viewed")

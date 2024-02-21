@@ -47,7 +47,7 @@ public class HierarchicalConnector {
     searcherConnection = interactor.connectSearcher(searcher: searcher)
     filterStateConnection = interactor.connectFilterState(filterState)
     controllerConnections = []
-    Telemetry.shared.traceConnector(type: .hierarchicalFacets)
+  //  Telemetry.shared.traceConnector(type: .hierarchicalFacets)
   }
 }
 

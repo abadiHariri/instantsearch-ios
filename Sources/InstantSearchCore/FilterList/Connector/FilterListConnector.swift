@@ -40,19 +40,19 @@ public class FilterListConnector<Filter: FilterType & Hashable> {
                                                           operator: `operator`,
                                                           groupName: groupName)
     controllerConnections = []
-    switch Filter.self {
-    case is FacetFilter.Type:
-      Telemetry.shared.traceConnector(type: .facetFilterList)
-
-    case is NumericFilter.Type:
-      Telemetry.shared.traceConnector(type: .numericFilterList)
-
-    case is TagFilter.Type:
-      Telemetry.shared.traceConnector(type: .tagFilterList)
-
-    default:
-      break
-    }
+//    switch Filter.self {
+//    case is FacetFilter.Type:
+//      Telemetry.shared.traceConnector(type: .facetFilterList)
+//
+//    case is NumericFilter.Type:
+//      Telemetry.shared.traceConnector(type: .numericFilterList)
+//
+//    case is TagFilter.Type:
+//      Telemetry.shared.traceConnector(type: .tagFilterList)
+//
+//    default:
+//      break
+//    }
   }
 
   /**
@@ -75,22 +75,22 @@ public class FilterListConnector<Filter: FilterType & Hashable> {
               interactor: interactor,
               operator: `operator`,
               groupName: groupName)
-    switch Filter.self {
-    case is FacetFilter.Type:
-      Telemetry.shared.traceConnector(type: .facetFilterList,
-                                      parameters: .filters, .selectionMode)
-
-    case is NumericFilter.Type:
-      Telemetry.shared.traceConnector(type: .numericFilterList,
-                                      parameters: .filters, .selectionMode)
-
-    case is TagFilter.Type:
-      Telemetry.shared.traceConnector(type: .tagFilterList,
-                                      parameters: .filters, .selectionMode)
-
-    default:
-      break
-    }
+//    switch Filter.self {
+//    case is FacetFilter.Type:
+//      Telemetry.shared.traceConnector(type: .facetFilterList,
+//                                      parameters: .filters, .selectionMode)
+//
+//    case is NumericFilter.Type:
+//      Telemetry.shared.traceConnector(type: .numericFilterList,
+//                                      parameters: .filters, .selectionMode)
+//
+//    case is TagFilter.Type:
+//      Telemetry.shared.traceConnector(type: .tagFilterList,
+//                                      parameters: .filters, .selectionMode)
+//
+//    default:
+//      break
+//    }
   }
 }
 

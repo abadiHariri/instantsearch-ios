@@ -32,10 +32,10 @@ let package = Package(
   dependencies: [
     .package(name: "AlgoliaSearchClient",
              url: "https://github.com/abadiHariri/algoliasearch-client-swift.git",
-             branch: "Custom"),
-    .package(name: "InstantSearchTelemetry",
-             url: "https://github.com/algolia/instantsearch-telemetry-native",
-             from: "0.1.3")
+             branch: "Custom")
+//    .package(name: "InstantSearchTelemetry",
+//             url: "https://github.com/algolia/instantsearch-telemetry-native",
+//             from: "0.1.3")
   ],
   targets: [
     .target(
@@ -49,7 +49,7 @@ let package = Package(
     ),
     .target(
       name: "InstantSearchCore",
-      dependencies: ["AlgoliaSearchClient", "InstantSearchInsights", .product(name: "InstantSearchTelemetry", package: "InstantSearchTelemetry")]
+      dependencies: ["AlgoliaSearchClient", "InstantSearchInsights"]
     ),
     .testTarget(
       name: "InstantSearchCoreTests",
@@ -75,7 +75,7 @@ let package = Package(
     ),
     .target(
       name: "InstantSearchSwiftUI",
-      dependencies: ["InstantSearchCore", .product(name: "InstantSearchTelemetry", package: "InstantSearchTelemetry")]
+      dependencies: ["InstantSearchCore"]
     ),
     .testTarget(
       name: "InstantSearchSwiftUITests",

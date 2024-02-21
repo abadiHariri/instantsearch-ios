@@ -8,7 +8,7 @@
 #if !InstantSearchCocoaPods
   import InstantSearchCore
 #endif
-import InstantSearchTelemetry
+//import InstantSearchTelemetry
 #if canImport(Combine) && canImport(SwiftUI) && (arch(arm64) || arch(x86_64))
   import Combine
   import SwiftUI
@@ -53,7 +53,7 @@ import InstantSearchTelemetry
                 bounds: ClosedRange<Number> = Number(0)...Number(1)) {
       self.range = range.clamped(to: bounds)
       self.bounds = bounds
-      InstantSearchTelemetry.shared.traceDeclarative(type: .numberRangeFilter)
+     // InstantSearchTelemetry.shared.traceDeclarative(type: .numberRangeFilter)
     }
   }
 #endif
