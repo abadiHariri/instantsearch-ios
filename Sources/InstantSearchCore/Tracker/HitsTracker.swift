@@ -110,6 +110,7 @@ public extension HitsTracker {
                                  timestamp: .none,
                                  userToken: .none,
                                  objectData:nil,
+                                 value: nil,
                                  currency: nil)
     }
   }
@@ -142,6 +143,7 @@ public extension HitsTracker {
                                    timestamp: .none,
                                    userToken: .none,
                                    objectData:nil,
+                                   value: nil,
                                    currency: nil)
     }
   }

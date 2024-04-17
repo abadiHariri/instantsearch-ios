@@ -87,6 +87,7 @@ class EventTracker: EventTrackable {
              positions: [Int],
              queryID: QueryID,
              objectData: [ObjectDataEvent]? = nil,
+             value: String? = nil,
              currency: String? = nil) {
     do {
       let objectIDsWithPositions = zip(objectIDs, positions).map { $0 }
@@ -96,6 +97,7 @@ class EventTracker: EventTrackable {
                                         timestamp: effectiveTimestamp(for: timestamp),
                                         queryID: queryID,
                                         objectData: objectData,
+                                        value: value,
                                         currency:currency,
                                         objectIDsWithPositions: objectIDsWithPositions))
     } catch {
@@ -109,6 +111,7 @@ class EventTracker: EventTrackable {
              timestamp: Date?,
              objectIDs: [ObjectID],
              objectData: [ObjectDataEvent]? = nil,
+             value: String? = nil,
              currency: String? = nil) {
     do {
       eventProcessor.process(try .click(name: eventName,
@@ -117,6 +120,7 @@ class EventTracker: EventTrackable {
                                         timestamp: effectiveTimestamp(for: timestamp),
                                         objectIDs: objectIDs,
                                         objectData: objectData,
+                                        value: value,
                                         currency:currency))
     } catch {
       log(error)
@@ -146,6 +150,7 @@ class EventTracker: EventTrackable {
                     timestamp: Date?,
                     objectIDs: [ObjectID],
                     objectData: [ObjectDataEvent]? = nil,
+                    value: String? = nil,
                     currency: String? = nil) {
         do {
             eventProcessor.process(try .conversion(subType:subType,
@@ -156,6 +161,7 @@ class EventTracker: EventTrackable {
                                                    queryID: nil,
                                                    objectIDs: objectIDs,
                                                    objectData: objectData,
+                                                   value: value,
                                                    currency: currency))
         } catch {
             log(error)
@@ -189,6 +195,7 @@ class EventTracker: EventTrackable {
                     objectIDs: [ObjectID],
                     queryID: QueryID,
                     objectData: [ObjectDataEvent]? = nil,
+                    value: String? = nil,
                     currency: String? = nil) {
         do {
             eventProcessor.process(try .conversion(subType:subType,
@@ -199,6 +206,7 @@ class EventTracker: EventTrackable {
                                                    queryID: queryID,
                                                    objectIDs: objectIDs,
                                                    objectData: objectData,
+                                                   value: value,
                                                    currency: currency))
         } catch {
             log(error)

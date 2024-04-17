@@ -20,6 +20,7 @@ protocol HitsAfterSearchTrackable {
                           timestamp: Date?,
                           userToken: UserToken?,
                           objectData: [ObjectDataEvent]?,
+                          value:String?,
                           currency: String?)
 
   func convertedAfterSearch(eventName: EventName,
@@ -29,6 +30,7 @@ protocol HitsAfterSearchTrackable {
                             timestamp: Date?,
                             userToken: UserToken?,
                             objectData: [ObjectDataEvent]?,
+                            value:String?,
                             currency: String?)
 
   func viewed(eventName: EventName,

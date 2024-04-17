@@ -29,11 +29,11 @@ class TestEventTracker: EventTrackable {
     didViewFilters?(eventName, indexName, userToken, timestamp, filters)
   }
 
-  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], objectData: [ObjectDataEvent]?, currency: String?) {
+  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], objectData: [ObjectDataEvent]?, value: String?, currency: String?) {
     didClickObjects?(eventName, indexName, userToken, timestamp, objectIDs)
   }
 
-  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], positions: [Int], queryID: QueryID, objectData: [ObjectDataEvent]?, currency: String?) {
+  func click(eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], positions: [Int], queryID: QueryID, objectData: [ObjectDataEvent]?, value: String?, currency: String?) {
     didClickObjectsAfterSearch?(eventName, indexName, userToken, timestamp, objectIDs, positions, queryID)
   }
 
@@ -41,11 +41,11 @@ class TestEventTracker: EventTrackable {
     didClickFilters?(eventName, indexName, userToken, timestamp, filters)
   }
      
-    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], objectData: [ObjectDataEvent]?, currency: String?) {
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], objectData: [ObjectDataEvent]?, value: String?, currency: String?) {
         didConvertObjects?(eventName, indexName, userToken, timestamp, objectIDs)
     }
     
-    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], queryID: QueryID, objectData: [ObjectDataEvent]?, currency: String?) {
+    func conversion(subType: InsightsEvent.EventSubType?, eventName: EventName, indexName: IndexName, userToken: UserToken?, timestamp: Date?, objectIDs: [ObjectID], queryID: QueryID, objectData: [ObjectDataEvent]?, value: String?, currency: String?) {
         didConvertObjectsAfterSearch?(eventName, indexName, userToken, timestamp, objectIDs, queryID)
     }
     

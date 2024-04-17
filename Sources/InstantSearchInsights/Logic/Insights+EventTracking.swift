@@ -80,6 +80,7 @@ public extension Insights {
                timestamp: Date? = .none,
                userToken: UserToken? = .none,
                objectData: [ObjectDataEvent]? = nil,
+               value: String? = nil,
                currency: String? = nil) {
     eventTracker.click(eventName: eventName,
                        indexName: indexName,
@@ -87,6 +88,7 @@ public extension Insights {
                        timestamp: timestamp,
                        objectIDs: objectIDs,
                        objectData: objectData,
+                       value: value,
                        currency: currency)
   }
 
@@ -103,6 +105,7 @@ public extension Insights {
                timestamp: Date? = .none,
                userToken: UserToken? = .none,
                objectData: [ObjectDataEvent]? = nil,
+               value: String? = nil,
                currency: String? = nil) {
     eventTracker.click(eventName: eventName,
                        indexName: indexName,
@@ -110,6 +113,7 @@ public extension Insights {
                        timestamp: timestamp,
                        objectIDs: [objectID],
                        objectData: objectData,
+                       value: value,
                        currency: currency)
   }
 
@@ -146,6 +150,7 @@ public extension Insights {
                  timestamp: Date? = .none,
                  userToken: UserToken? = .none,
                  objectData: [ObjectDataEvent]? = nil,
+                 value: String? = nil,
                  currency: String? = nil) {
       eventTracker.conversion(subType: subType,
                             eventName: eventName,
@@ -154,6 +159,7 @@ public extension Insights {
                             timestamp: timestamp,
                             objectIDs: objectIDs,
                               objectData: objectData,
+                              value: value,
                               currency: currency)
   }
 
@@ -171,6 +177,7 @@ public extension Insights {
                  timestamp: Date? = .none,
                  userToken: UserToken? = .none,
                  objectData: [ObjectDataEvent]? = nil,
+                 value: String? = nil,
                  currency: String? = nil) {
     eventTracker.conversion(subType: subType,
                             eventName: eventName,
@@ -179,6 +186,7 @@ public extension Insights {
                             timestamp: timestamp,
                             objectIDs: [objectID],
                             objectData: objectData,
+                            value: value,
                             currency: currency)
   }
 

@@ -15,11 +15,11 @@ class TestHitsTracker: HitsAfterSearchTrackable {
   var didConvert: (((eventName: EventName, indexName: IndexName, objectIDs: [ObjectID], queryID: QueryID, timestamp: Date?, userToken: UserToken?)) -> Void)?
   var didView: (((eventName: EventName, indexName: IndexName, objectIDs: [ObjectID], timestamp: Date?, userToken: UserToken?)) -> Void)?
 
-  func clickedAfterSearch(eventName: EventName, indexName: IndexName, objectIDsWithPositions: [(ObjectID, Int)], queryID: QueryID, timestamp: Date?, userToken: UserToken?, objectData: [ObjectDataEvent]?, currency: String?) {
+  func clickedAfterSearch(eventName: EventName, indexName: IndexName, objectIDsWithPositions: [(ObjectID, Int)], queryID: QueryID, timestamp: Date?, userToken: UserToken?, objectData: [ObjectDataEvent]?, value: String?, currency: String?) {
     didClick?((eventName, indexName, objectIDsWithPositions, queryID, timestamp, userToken))
   }
 
-  func convertedAfterSearch(eventName: EventName, indexName: IndexName, objectIDs: [ObjectID], queryID: QueryID, timestamp: Date?, userToken: UserToken?, objectData: [ObjectDataEvent]?, currency: String?) {
+  func convertedAfterSearch(eventName: EventName, indexName: IndexName, objectIDs: [ObjectID], queryID: QueryID, timestamp: Date?, userToken: UserToken?, objectData: [ObjectDataEvent]?, value: String?, currency: String?) {
     didConvert?((eventName, indexName, objectIDs, queryID, timestamp, userToken))
   }
 

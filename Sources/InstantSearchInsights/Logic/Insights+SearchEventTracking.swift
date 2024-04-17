@@ -27,6 +27,7 @@ public extension Insights {
                           timestamp: Date? = .none,
                           userToken: UserToken? = .none,
                           objectData: [ObjectDataEvent]? = nil,
+                          value: String? = nil,
                           currency: String? = nil) {
     eventTracker.click(eventName: eventName,
                        indexName: indexName,
@@ -36,6 +37,7 @@ public extension Insights {
                        positions: positions,
                        queryID: queryID,
                        objectData:objectData,
+                       value: value,
                        currency:currency)
   }
 
@@ -54,6 +56,7 @@ public extension Insights {
                           timestamp: Date? = .none,
                           userToken: UserToken? = .none,
                           objectData: [ObjectDataEvent]? = nil,
+                          value: String? = nil,
                           currency: String? = nil)  {
     clickedAfterSearch(eventName: eventName,
                        indexName: indexName,
@@ -63,6 +66,7 @@ public extension Insights {
                        timestamp: timestamp,
                        userToken: userToken,
                        objectData:objectData,
+                       value: value,
                        currency:currency)
   }
 
@@ -83,6 +87,7 @@ public extension Insights {
                           timestamp: Date? = .none,
                           userToken: UserToken? = .none,
                           objectData: [ObjectDataEvent]? = nil,
+                          value: String? = nil,
                           currency: String? = nil)  {
     clickedAfterSearch(eventName: eventName,
                        indexName: indexName,
@@ -92,6 +97,7 @@ public extension Insights {
                        timestamp: timestamp,
                        userToken: userToken,
                        objectData:objectData,
+                       value: value,
                        currency:currency)
   }
 
@@ -110,6 +116,7 @@ public extension Insights {
                             timestamp: Date? = .none,
                             userToken: UserToken? = .none,
                             objectData: [ObjectDataEvent]? = nil,
+                            value: String? = nil,
                             currency: String? = nil) {
     eventTracker.conversion(subType: nil,
                             eventName: eventName,
@@ -119,6 +126,7 @@ public extension Insights {
                             objectIDs: objectIDs,
                             queryID: queryID,
                             objectData:objectData,
+                            value: value,
                             currency:currency)
   }
     
@@ -130,6 +138,7 @@ public extension Insights {
                               timestamp: Date? = .none,
                               userToken: UserToken? = .none,
                               objectData: [ObjectDataEvent]? = nil,
+                              value: String? = nil,
                               currency: String? = nil) {
         eventTracker.conversion(
             subType: .addToCart,
@@ -140,6 +149,7 @@ public extension Insights {
             objectIDs: objectIDs,
             queryID: queryID,
             objectData:objectData,
+            value: value,
             currency:currency)
     }
     
@@ -150,6 +160,7 @@ public extension Insights {
                               timestamp: Date? = .none,
                               userToken: UserToken? = .none,
                    objectData: [ObjectDataEvent]? = nil,
+                   value: String? = nil,
                    currency: String? = nil) {
         eventTracker.conversion(
             subType: .addToCart,
@@ -159,6 +170,7 @@ public extension Insights {
             timestamp: timestamp,
             objectIDs: objectIDs,
             objectData:objectData,
+            value: value,
             currency:currency)
     }
     
@@ -169,6 +181,7 @@ public extension Insights {
                              objectIDs: [ObjectID],
                              queryID: QueryID,
                              objectData: [ObjectDataEvent]? = nil,
+                             value: String? = nil,
                              currency: String? = nil,
                              timestamp: Date? = .none,
                              userToken: UserToken? = .none) {
@@ -181,6 +194,7 @@ public extension Insights {
             objectIDs: objectIDs,
             queryID: queryID,
             objectData:objectData,
+            value: value,
             currency:currency)
     }
     
@@ -189,6 +203,7 @@ public extension Insights {
                               indexName: IndexName,
                               objectIDs: [ObjectID],
                   objectData: [ObjectDataEvent]? = nil,
+                  value: String? = nil,
                   currency: String? = nil,
                               timestamp: Date? = .none,
                               userToken: UserToken? = .none) {
@@ -199,6 +214,7 @@ public extension Insights {
                                 timestamp: timestamp,
                                 objectIDs: objectIDs,
                                 objectData:objectData,
+                                value: value,
                                 currency:currency)
     }
   /// Track a conversion related to search
@@ -216,6 +232,7 @@ public extension Insights {
                             timestamp: Date? = .none,
                             userToken: UserToken? = .none,
                             objectData: [ObjectDataEvent]? = nil,
+                            value: String? = nil,
                             currency: String? = nil) {
     eventTracker.conversion(subType: nil,
                             eventName: eventName,
@@ -225,6 +242,7 @@ public extension Insights {
                             objectIDs: [objectID],
                             queryID: queryID,
                             objectData:objectData,
+                            value: value,
                             currency:currency)
   }
 }

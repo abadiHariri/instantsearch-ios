@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "InstantSearch",
   platforms: [
-    .iOS(.v13),
+    .iOS(.v14),
     .macOS(.v10_11),
     .watchOS(.v2),
     .tvOS(.v9)
@@ -32,7 +32,8 @@ let package = Package(
   dependencies: [
     .package(name: "AlgoliaSearchClient",
              url: "https://github.com/abadiHariri/algoliasearch-client-swift.git",
-             branch: "Custom")
+             branch: "Custom"),
+    .package(name: "Logging",url: "https://github.com/apple/swift-log.git", from: "1.5.4")
 //    .package(name: "InstantSearchTelemetry",
 //             url: "https://github.com/algolia/instantsearch-telemetry-native",
 //             from: "0.1.3")
@@ -40,20 +41,20 @@ let package = Package(
   targets: [
     .target(
       name: "InstantSearchInsights",
-      dependencies: ["AlgoliaSearchClient"],
+      dependencies: ["AlgoliaSearchClient","Logging"],
       exclude: ["Readme.md"]
     ),
     .testTarget(
       name: "InstantSearchInsightsTests",
-      dependencies: ["InstantSearchInsights", "AlgoliaSearchClient"]
+      dependencies: ["InstantSearchInsights", "AlgoliaSearchClient","Logging"]
     ),
     .target(
       name: "InstantSearchCore",
-      dependencies: ["AlgoliaSearchClient", "InstantSearchInsights"]
+      dependencies: ["AlgoliaSearchClient", "InstantSearchInsights","Logging"]
     ),
     .testTarget(
       name: "InstantSearchCoreTests",
-      dependencies: ["InstantSearchCore", "AlgoliaSearchClient", "InstantSearchInsights"],
+      dependencies: ["InstantSearchCore", "AlgoliaSearchClient", "InstantSearchInsights","Logging"],
       resources: [
         .copy("Misc/DisjFacetingResult1.json"),
         .copy("Misc/DisjFacetingResult2.json"),
