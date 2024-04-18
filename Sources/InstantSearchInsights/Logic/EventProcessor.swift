@@ -175,8 +175,14 @@ private extension EventProcessor {
         processor.logger.info("package succesfully sent")
         shouldRemovePackage = true
       case let .failure(error):
-        processor.logger.error("package sending failed: \(error.localizedDescription)")
-        shouldRemovePackage = !Service.isRetryable(error)
+          processor.logger.error("package sending failed: \(error.localizedDescription)")
+          
+          if let checkRetryePackage = self?.checkRetryePackage(error: error) {
+              shouldRemovePackage = !checkRetryePackage
+          } else {
+              shouldRemovePackage = !Service.isRetryable(error)
+          }
+         
       }
 
       guard shouldRemovePackage else { return }
@@ -192,4 +198,34 @@ private extension EventProcessor {
       }
     }
   }
+}
+
+
+private extension EventProcessor {
+    
+    func checkRetryePackage(error: Error) -> Bool? {
+        guard let status = ignoreErrors(error) else {
+            return true
+        }
+        return !(400..<500).contains(status)
+    }
+    
+    
+    func ignoreErrors(_ error: Error) -> Int? {
+        switch error {
+        case .requestError(let error as URLError) as TransportError :
+            return error.code.rawValue
+            
+        case .httpError(let error) as TransportError:
+            return error.statusCode
+        default:
+            if let error = error as? URLError {
+                return error.code.rawValue
+            } else if let error = error as? HTTPError {
+                return error.statusCode
+            }
+            return nil
+        }
+    }
+    
 }
