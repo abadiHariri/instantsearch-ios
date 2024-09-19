@@ -1,5 +1,22 @@
 # ChangeLog
 
+## [7.26.3](https://github.com/algolia/instantsearch-ios/compare/7.26.2...7.26.3) (2024-07-29)
+
+### Fix
+
+- conform pagemap extension to sequence protocol (#321) ([a921ecb](https://github.com/algolia/instantsearch-ios/commit/a921ecb))
+
+
+
+## [7.26.2](https://github.com/algolia/instantsearch-ios/compare/7.26.1...7.26.2) (2024-06-04)
+
+### Fix
+
+- align versions with api client (#315) ([27105ae](https://github.com/algolia/instantsearch-ios/commit/27105ae))
+- **insights**: control auto sending events w/ `isAutoSendingHitsViewEvents` (#314) ([8573411](https://github.com/algolia/instantsearch-ios/commit/8573411))
+
+
+
 ## [7.26.1](https://github.com/algolia/instantsearch-ios/compare/7.26.0...7.26.1) (2023-08-28)
 
 ### Misc

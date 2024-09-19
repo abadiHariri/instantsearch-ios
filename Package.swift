@@ -7,9 +7,9 @@ let package = Package(
   name: "InstantSearch",
   platforms: [
     .iOS(.v14),
-    .macOS(.v10_11),
-    .watchOS(.v2),
-    .tvOS(.v9)
+    .macOS(.v11),
+    .watchOS(.v7),
+    .tvOS(.v14)
   ],
   products: [
     .library(
@@ -33,28 +33,33 @@ let package = Package(
     .package(name: "AlgoliaSearchClient",
              url: "https://github.com/abadiHariri/algoliasearch-client-swift.git",
              branch: "Custom"),
-    .package(name: "Logging",url: "https://github.com/apple/swift-log.git", from: "1.5.4")
+    .package(url: "https://github.com/apple/swift-log",
+             from: "1.5.4"),
+    .package(url: "https://github.com/apple/swift-protobuf",
+             .exact("1.22.0"))
 //    .package(name: "InstantSearchTelemetry",
 //             url: "https://github.com/algolia/instantsearch-telemetry-native",
-//             from: "0.1.3")
+//             .exact("0.1.3"))
   ],
   targets: [
     .target(
       name: "InstantSearchInsights",
-      dependencies: ["AlgoliaSearchClient","Logging"],
-      exclude: ["Readme.md"]
+      dependencies: ["AlgoliaSearchClient"],
+      exclude: ["Readme.md"],
+      resources: [.copy("../PrivacyInfo.xcprivacy")]
     ),
     .testTarget(
       name: "InstantSearchInsightsTests",
-      dependencies: ["InstantSearchInsights", "AlgoliaSearchClient","Logging"]
+      dependencies: ["InstantSearchInsights", "AlgoliaSearchClient"]
     ),
     .target(
       name: "InstantSearchCore",
-      dependencies: ["AlgoliaSearchClient", "InstantSearchInsights","Logging"]
+      dependencies: ["AlgoliaSearchClient", "InstantSearchInsights", .product(name: "Logging", package: "swift-log")],
+      resources: [.copy("../PrivacyInfo.xcprivacy")]
     ),
     .testTarget(
       name: "InstantSearchCoreTests",
-      dependencies: ["InstantSearchCore", "AlgoliaSearchClient", "InstantSearchInsights","Logging"],
+      dependencies: ["InstantSearchCore", "AlgoliaSearchClient", "InstantSearchInsights"],
       resources: [
         .copy("Misc/DisjFacetingResult1.json"),
         .copy("Misc/DisjFacetingResult2.json"),
@@ -68,7 +73,8 @@ let package = Package(
     ),
     .target(
       name: "InstantSearch",
-      dependencies: ["InstantSearchCore"]
+      dependencies: ["InstantSearchCore"],
+      resources: [.copy("../PrivacyInfo.xcprivacy")]
     ),
     .testTarget(
       name: "InstantSearchTests",
@@ -76,7 +82,8 @@ let package = Package(
     ),
     .target(
       name: "InstantSearchSwiftUI",
-      dependencies: ["InstantSearchCore"]
+      dependencies: ["InstantSearchCore"],
+      resources: [.copy("../PrivacyInfo.xcprivacy")]
     ),
     .testTarget(
       name: "InstantSearchSwiftUITests",
