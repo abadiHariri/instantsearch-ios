@@ -60,7 +60,7 @@ public extension NumberRange {
         switch numericFilter.value {
         case let .range(closedRange):
           return Number(closedRange.lowerBound)...Number(closedRange.upperBound)
-        case .comparison:
+        case .comparison,.comparisonInt:
           return nil
         }
       }

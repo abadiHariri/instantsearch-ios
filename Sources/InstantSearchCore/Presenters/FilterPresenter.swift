@@ -33,7 +33,9 @@ public extension DefaultPresenter {
         switch numericFilter.value {
         case let .comparison(compOperator, value):
           return "\(attributeName) \(compOperator) \(value)"
-
+        case let .comparisonInt(compOperator, value):
+          return "\(attributeName) \(compOperator) \(value)"
+            
         case let .range(range):
           return "\(attributeName): \(range.lowerBound) to \(range.upperBound)"
         }

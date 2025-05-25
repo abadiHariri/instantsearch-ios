@@ -42,7 +42,12 @@ extension Filter.Numeric: LegacySyntaxConvertible {
       \(attribute) \(`operator`.rawValue) \(value)
       """
       return .and(.and(expression))
-
+    case let .comparisonInt(`operator`, value):
+      let `operator` = isNegated ? `operator`.inversion : `operator`
+      let expression = """
+      \(attribute) \(`operator`.rawValue) \(value)
+      """
+      return .and(.and(expression))
     case let .range(range):
       let units = [
         Filter.Numeric(attribute: attribute, operator: isNegated ? .lessThan : .greaterThanOrEqual, value: range.lowerBound),

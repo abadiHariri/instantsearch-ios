@@ -40,7 +40,10 @@ extension Filter.Numeric: SQLSyntaxConvertible {
       expression = """
       "\(attribute)" \(`operator`.rawValue) \(value)
       """
-
+    case let .comparisonInt(`operator`, value):
+      expression = """
+      "\(attribute)" \(`operator`.rawValue) \(value)
+      """
     case let .range(range):
       expression = """
       "\(attribute)":\(range.lowerBound) TO \(range.upperBound)

@@ -18,8 +18,9 @@ public extension Filter {
     public enum ValueType: Hashable {
       case range(ClosedRange<Double>)
       case comparison(Operator, Double)
+      case comparisonInt(Operator, Int)
     }
-
+    
     public enum Operator: String, CustomStringConvertible {
       case lessThan = "<"
       case lessThanOrEqual = "<="
@@ -27,7 +28,7 @@ public extension Filter {
       case notEquals = "!="
       case greaterThanOrEqual = ">="
       case greaterThan = ">"
-
+      
       var inversion: Operator {
         switch self {
         case .equals:
@@ -44,28 +45,32 @@ public extension Filter {
           return .equals
         }
       }
-
+      
       public var description: String {
         return rawValue
       }
     }
-
+    
     public let attribute: Attribute
     public let value: ValueType
     public var isNegated: Bool
-
+    
     init(attribute: Attribute, value: ValueType, isNegated: Bool) {
       self.attribute = attribute
       self.isNegated = isNegated
       self.value = value
     }
-
+    
     public init(attribute: Attribute, range: ClosedRange<Double>, isNegated: Bool = false) {
       self.init(attribute: attribute, value: .range(range), isNegated: isNegated)
     }
-
+    
     public init(attribute: Attribute, operator: Operator, value: Double, isNegated: Bool = false) {
       self.init(attribute: attribute, value: .comparison(`operator`, value), isNegated: isNegated)
+    }
+    
+    public init(attribute: Attribute, operator: Operator, value: Int, isNegated: Bool = false) {
+      self.init(attribute: attribute, value: .comparisonInt(`operator`, value), isNegated: isNegated)
     }
   }
 }
@@ -77,6 +82,8 @@ extension Filter.Numeric.ValueType: CustomStringConvertible {
       return "\(range.lowerBound) – \(range.upperBound)"
     case let .comparison(compOperator, value):
       return "\(compOperator.description) \(value)"
+    case let .comparisonInt(compOperator, value):
+      return "\(compOperator.description) \(value)"
     }
   }
 }
@@ -87,7 +94,7 @@ extension Filter.Numeric: CustomStringConvertible {
     switch value {
     case .range:
       separator = ":"
-    case .comparison:
+    case .comparison, .comparisonInt:
       separator = ""
     }
     return "\(attribute)\(separator) \(value.description)"
