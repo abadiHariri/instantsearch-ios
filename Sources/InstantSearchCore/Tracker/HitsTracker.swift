@@ -102,7 +102,7 @@ public extension HitsTracker {
                                    eventName: EventName? = nil) {
     guard isEnabled else { return }
     guard let queryID = queryID else { return }
-    for objectIDsWithPositions in Array(zip(hits.map(\.objectID), positions)).chunk(into: maxObjectIDsCount) {
+      for objectIDsWithPositions in Array(zip(hits.compactMap(\.objectID), positions)).chunk(into: maxObjectIDsCount) {
       tracker.clickedAfterSearch(eventName: eventName ?? self.eventName,
                                  indexName: searcher.indexName,
                                  objectIDsWithPositions: objectIDsWithPositions,
@@ -135,7 +135,7 @@ public extension HitsTracker {
                                      eventName: EventName? = nil) {
     guard isEnabled else { return }
     guard let queryID = queryID else { return }
-    for objectIDs in hits.map(\.objectID).chunk(into: maxObjectIDsCount) {
+    for objectIDs in hits.compactMap(\.objectID).chunk(into: maxObjectIDsCount) {
       tracker.convertedAfterSearch(eventName: eventName ?? self.eventName,
                                    indexName: searcher.indexName,
                                    objectIDs: objectIDs,
@@ -167,7 +167,7 @@ public extension HitsTracker {
   func trackView<Record: Codable>(for hits: [Hit<Record>],
                                   eventName: EventName? = nil) {
     guard isEnabled else { return }
-    for objectIDs in hits.map(\.objectID).chunk(into: maxObjectIDsCount) {
+    for objectIDs in hits.compactMap(\.objectID).chunk(into: maxObjectIDsCount) {
       tracker.viewed(eventName: eventName ?? self.eventName,
                      indexName: searcher.indexName,
                      objectIDs: objectIDs,
