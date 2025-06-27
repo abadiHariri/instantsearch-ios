@@ -13,6 +13,7 @@ public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
   /**
     - Parameters:
        - client: Algolia search client
+       - requestOptions: Custom request options. Default is `nil`.
    */
   public convenience init(client: SearchClient, requestOptions: RequestOptions? = nil) {
     let service = AlgoliaMultiSearchService(client: client)
@@ -28,6 +29,7 @@ public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
     - Parameters:
        - appID: Application ID
        - apiKey: API Key
+       - requestOptions: Custom request options. Default is `nil`.
    */
   public convenience init(appID: ApplicationID,
                           apiKey: APIKey,
@@ -40,14 +42,15 @@ public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
     - Parameters:
         - indexName: Name of the index in which search will be performed
         - query: Instance of Query. By default a new empty instant of Query will be created.
-        - requestOptions: (Deprecated: Does not actually do anything in multi queries) Custom request options. Default is `nil`.
+        - requestOptions: requestOptions: Deprecated: This option does not have an effect, use `requestOptions` in `init` instead.
    */
   @discardableResult public func addHitsSearcher(indexName: IndexName,
                                                  query: Query = .init(),
                                                  requestOptions: RequestOptions? = nil) -> HitsSearcher {
     let searcher = HitsSearcher(client: service.client,
                                 indexName: indexName,
-                                query: query)
+                                query: query,
+                                requestOptions: requestOptions)
     return addSearcher(searcher)
   }
 
@@ -57,7 +60,7 @@ public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
        - query: Instance of Query. By default a new empty instant of Query will be created.
        - attribute: Name of facet attribute for which the values will be searched
        - facetQuery: Initial facet search query
-       - requestOptions: (Deprecated: Does not actually do anything in multi queries) Custom request options. Default is `nil`.
+       - requestOptions: requestOptions: Deprecated: This option does not have an effect, use `requestOptions` in `init` instead.
    */
   @discardableResult public func addFacetsSearcher(indexName: IndexName,
                                                    query: Query = .init(),
@@ -67,7 +70,8 @@ public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
     let searcher = FacetSearcher(client: service.client,
                                  indexName: indexName,
                                  facetName: attribute,
-                                 query: query)
+                                 query: query,
+                                 requestOptions: requestOptions)
     return addSearcher(searcher)
   }
 }
