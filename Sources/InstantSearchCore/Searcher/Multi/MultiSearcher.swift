@@ -10,6 +10,15 @@ import Foundation
 
 /// Searcher performing search for hits or facets in multiple indices simultaneously
 public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
+    /**
+    - Parameters:
+       - client: Algolia search client
+   */
+  @available(*, deprecated, message: "Use init(client:requestOptions:) instead")
+  public convenience init(client: SearchClient) {
+      self.init(client: client, requestOptions: nil)
+  }
+
   /**
     - Parameters:
        - client: Algolia search client
