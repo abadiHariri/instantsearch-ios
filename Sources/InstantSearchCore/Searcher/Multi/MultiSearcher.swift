@@ -10,7 +10,7 @@ import Foundation
 
 /// Searcher performing search for hits or facets in multiple indices simultaneously
 public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
-    /**
+  /**
     - Parameters:
        - client: Algolia search client
    */
@@ -32,6 +32,17 @@ public class MultiSearcher: AbstractMultiSearcher<AlgoliaMultiSearchService> {
     self.init(service: service,
               initialRequest: initialRequest)
     Telemetry.shared.trace(type: .multiSearcher)
+  }
+
+  /**
+    - Parameters:
+       - appID: Application ID
+       - apiKey: API Key
+   */
+  @available(*, deprecated, message: "Use init(appID:apiKey:requestOptions:) instead")
+  public convenience init(appID: ApplicationID,
+                          apiKey: APIKey) {
+    self.init(appID: appID, apiKey: apiKey, requestOptions: nil)
   }
 
   /**
