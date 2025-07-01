@@ -1,5 +1,17 @@
 # ChangeLog
 
+## [7.27.0](https://github.com/algolia/instantsearch-ios/compare/7.26.4...7.27.0) (2025-07-01)
+
+### Misc
+
+- Merge pull request #341 from algolia/fix/multi-query-headers ([51a0890](https://github.com/algolia/instantsearch-ios/commit/51a0890))
+- add deprecated init part 2 ([9c59db6](https://github.com/algolia/instantsearch-ios/commit/9c59db6))
+- add deprecated init ([614b4dc](https://github.com/algolia/instantsearch-ios/commit/614b4dc))
+- address comments ([55e38f7](https://github.com/algolia/instantsearch-ios/commit/55e38f7))
+- add request options to multisearcher ([5c4c8a5](https://github.com/algolia/instantsearch-ios/commit/5c4c8a5))
+
+
+
 ## [7.26.4](https://github.com/algolia/instantsearch-ios/compare/7.26.3...7.26.4) (2025-02-19)
 
 ### Fix
