@@ -159,6 +159,7 @@ public class Insights {
   @discardableResult public static func register(appId: ApplicationID,
                                                  apiKey: APIKey,
                                                  customProxyURL: URL?=nil,
+                                                 requester: HTTPRequester?=nil,
                                                  userToken: UserToken? = .none,
                                                  generateTimestamps: Bool = true,
                                                  region: Region? = region) -> Insights {
@@ -168,6 +169,7 @@ public class Insights {
     let insights = Insights(applicationID: appId,
                             apiKey: apiKey,
                             customProxyURL:customProxyURL,
+                            requester:requester,
                             region: region,
                             flushDelay: Algolia.Insights.flushDelay,
                             userToken: userToken,
@@ -187,6 +189,7 @@ public class Insights {
   convenience init(applicationID: ApplicationID,
                    apiKey: APIKey,
                    customProxyURL: URL?=nil,
+                   requester: HTTPRequester?=nil,
                    region: Region? = region,
                    flushDelay: TimeInterval,
                    userToken: UserToken?,
@@ -206,7 +209,7 @@ public class Insights {
     var proxyClient:InsightsClient?
     
     if let customProxyURL = customProxyURL {
-      proxyClient = InsightsClient(appID: applicationID, customProxyURL: customProxyURL)
+      proxyClient = InsightsClient(appID: applicationID, customProxyURL: customProxyURL, requester: requester)
     }
     
     let insightsClient = proxyClient ?? InsightsClient(appID: applicationID, apiKey: apiKey, region: region)
