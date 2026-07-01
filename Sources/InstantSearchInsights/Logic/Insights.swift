@@ -158,6 +158,7 @@ public class Insights {
   /// - parameter  region: The desired API endpoint region
   @discardableResult public static func register(appId: ApplicationID,
                                                  apiKey: APIKey,
+                                                 customProxyURL: URL?=nil,
                                                  userToken: UserToken? = .none,
                                                  generateTimestamps: Bool = true,
                                                  region: Region? = region) -> Insights {
@@ -166,6 +167,7 @@ public class Insights {
     logger.info("application registered")
     let insights = Insights(applicationID: appId,
                             apiKey: apiKey,
+                            customProxyURL:customProxyURL,
                             region: region,
                             flushDelay: Algolia.Insights.flushDelay,
                             userToken: userToken,
@@ -184,6 +186,7 @@ public class Insights {
 
   convenience init(applicationID: ApplicationID,
                    apiKey: APIKey,
+                   customProxyURL: URL?=nil,
                    region: Region? = region,
                    flushDelay: TimeInterval,
                    userToken: UserToken?,
@@ -200,7 +203,13 @@ public class Insights {
       logger.error("\(error.localizedDescription)")
     }
 
-    let insightsClient = InsightsClient(appID: applicationID, apiKey: apiKey, region: region)
+    var proxyClient:InsightsClient?
+    
+    if let customProxyURL = customProxyURL {
+      proxyClient = InsightsClient(appID: applicationID, customProxyURL: customProxyURL)
+    }
+    
+    let insightsClient = proxyClient ?? InsightsClient(appID: applicationID, apiKey: apiKey, region: region)
 
     let acceptEvent: (InsightsEvent) -> Bool = { event in
       guard let timestamp = event.timestamp else {
